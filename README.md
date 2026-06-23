@@ -1,4 +1,4 @@
-# Práctica: Estructuras Dinámicas Lineales
+# Práctica: Estructuras Dinámicas No Lineales
 
 ## Datos del Estudiante
 - **Nombre:** Jorda Sagbay

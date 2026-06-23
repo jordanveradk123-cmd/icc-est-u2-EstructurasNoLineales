@@ -9,7 +9,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         runIntTree();
-        runPersonTree();
+        //runPersonTree();
     }
 
     private static void runPersonTree() {
