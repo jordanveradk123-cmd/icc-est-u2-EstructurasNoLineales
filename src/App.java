@@ -1,5 +1,8 @@
 import java.util.List;
+import java.util.Set;
 
+import Collections.set.Sets;
+import model.Contacto;
 import model.Person;
 import structures.node.Node;
 import trees.BinariTree;
@@ -12,10 +15,48 @@ import trees.IntTree;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        runSets();
 
-        runIntTree();
+        //runIntTree();
         //runPersonTree();
     }
+
+    private static void runSets() {
+        Sets sets = new Sets();
+
+
+        //Primera implemetacion de Set
+        System.out.println("Primera implemetacion de Set");
+        Set<String> hashSet = sets.construirHashSet();
+        System.out.println(hashSet);
+        System.out.println("Tamaño del HashSet: " + hashSet.size());
+        System.out.println("Contiene 'f': " + hashSet.contains("f"));
+        //Segunda implemetacion de Set LinkedHashSet
+        System.out.println("\nSegunda implemetacion de Set");
+        Set<String> linkedHashSet = sets.construLinkedHashSet();
+        System.out.println(linkedHashSet);
+        System.out.println("Tamaño del LinkedHashSet: " + linkedHashSet.size());
+        System.out.println("Contiene 'A': " + linkedHashSet.contains("A"));
+         //Tercera implemetacion de Set TreeSet
+        System.out.println("\nTercera implemetacion de TreeSet");
+        Set<String> treeSet = sets.construirTreeSet();
+        System.out.println(treeSet);
+        System.out.println("Tamaño del TreeSet: " + treeSet.size());
+        System.out.println("Contiene 'A': " + treeSet.contains("A"));
+
+        // Cuarta implementación de Set TreeSet con Contactos y comparador
+        System.out.println("\nCuarta implementación de TreeSet con comparador");
+        Set<Contacto> treeSetConComparador = sets.construirTreeSetConComparador();
+        System.out.println(treeSetConComparador);
+        System.out.println("Tamaño del TreeSet con comparador: " + treeSetConComparador.size());
+
+        System.out.println("\n  Quinta implementación de HashSet con comparador");
+        Set<Contacto> hashSetConComparador = sets.construirHashSetContacto();
+        System.out.println(hashSetConComparador);
+        System.out.println("Tamaño del HashSet con comparador: " + hashSetConComparador.size());
+
+    }
+    
 
     private static void runPersonTree() {
         BinariTree <Person> persontree = new BinariTree<>(); /// CLASE ARBOL
