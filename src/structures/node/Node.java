@@ -9,7 +9,7 @@ public class Node<T> {
     private Node<T> right;
 
     // Constructor ES LO QUE CREA EL NODO
-    // NECESTIO SOLO EL VALOR, LAS REFERENCIAS SE INICIALIZAN EN NULL
+    // NECESARIO SOLO EL VALOR, LAS REFERENCIAS SE INICIALIZAN EN NULL
     public Node(T value) {
         this.value = value;
         this.left = null;

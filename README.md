@@ -259,17 +259,14 @@ public class BinariTree<T extends Comparable<T>> {
 
 
 ![alt text](image-3.png)
-## 1. Ejercicio 1
+## 3. Ejercicio 1
 
 **Fecha:** 22/06/2026
 
 **Descripción:**
 
-El método principal inicia la visualización del árbol binario imprimiendo un encabezado y llamando a la función auxiliar desde la raíz en el nivel cero.
-La función auxiliar recorre recursivamente el árbol de forma inversa (derecha, raíz, izquierda) para mostrarlo visualmente de manera horizontal.
-En cada nodo visitado, imprime espacios en blanco proporcionales a su nivel de profundidad seguidos del valor numérico del nodo correspondiente.
+El método inicia el árbol binario imprimiendo el encabezado y llamando a la función auxiliar desde la raíz en el nivel cero para que la función auxiliar recorra recursivamente el árbol de forma inversa derecha a la raiz y a la  izquierda para mostrarlo visualmente de manera horizontal para por cada nodo visitado, imprime espacios en blanco dependiendo a su nivel de profundidad seguidos del valor numérico del nodo correspondiente.
 ### Captura del código de implementación del ejercicio 1
-
 ```java
 public class Ejercicio1 {
 
@@ -296,20 +293,21 @@ public class Ejercicio1 {
     }
 }
 ```
+### Salida de consola
+![alt text](image-4.png)
 
 
 
 
-## 2. Ejercico 2
+## 4. Ejercico 2
 
 **Fecha:** 22/06/2026
 **Descripción:**
-El método principal inicia la inversión del árbol binario pasando la raíz a la función auxiliar y finalmente la retorna modificada.
-La función auxiliar recorre recursivamente el árbol y se detiene inmediatamente si encuentra un nodo nulo.
-En cada nodo, intercambia sus referencias izquierda y derecha usando una variable temporal antes de repetir el proceso en sus hijos.
+El método principal pasa por la raíz a y de hay a la función auxiliar y finalmente la retorna modificada.
+La función auxiliar recorre recursivamente el árbol y se detiene inmediatamente si encuentra un nodo nulo por  cada nodo, intercambia sus referencias izquierda y derecha usando una variable temporal antes de repetir el proceso en sus hijos.
 .......
 
-### Método implementado
+### Captura del código de implementación del ejercicio 2
 
 ```java
 public class Ejercicio2 {
@@ -337,5 +335,96 @@ public class Ejercicio2 {
 
 }
 ```
-    
+### Salida de consola
+![alt text](image-5.png)
+## 5. Ejercicio 3
+
+**Fecha:** 23/06/2026
+
+**Descripción:**
+
+lo que realiza esta clase es un recorrido por niveles utilizando una cola lo hace cuando agrupa los nodos en listas diferentes según el nivel de profundidad en el que se encuentra para al final devolver una lista principal que contiene todos los niveles ordenados de arriba hacia abajo.
+### Captura del código de implementación del ejercicio 3
+
+```java
+public class Ejercicio3 {
+
+    public List<List<Node<Integer>>> listLevels(Node<Integer> root) {
+
+        List<List<Node<Integer>>> resultado =
+                new ArrayList<>();
+
+        if (root == null) {
+            return resultado;
+        }
+
+        Queue<Node<Integer>> cola =
+                new LinkedList<>();
+
+        cola.add(root);
+
+        while (!cola.isEmpty()) {
+
+            int cantidadNodos = cola.size();
+
+            List<Node<Integer>> nivel =
+                    new ArrayList<>();
+
+            for (int i = 0; i < cantidadNodos; i++) {
+
+                Node<Integer> actual = cola.poll();
+
+                nivel.add(actual);
+
+                if (actual.getLeft() != null) {
+                    cola.add(actual.getLeft());
+                }
+
+                if (actual.getRight() != null) {
+                    cola.add(actual.getRight());
+                }
+            }
+
+            resultado.add(nivel);
+        }
+
+        return resultado;
+    }
+}
+```
+### Salida de consola
+![alt text](image-6.png)
+## 6. Ejercicio 4
+
+**Fecha:** 23/06/2026
+
+**Descripción:**
+
+El codigo calcula la profundidad del árbol binario asi mismo con metodo recursivo primero Visita el subárbol izquierdo y derecho de cada nodo para obtener sus profundidades y despues al final toma el valor mayor entre ambos lados y le suma 1 contando el nodo actual para retornar el total.
+### Captura del código de implementación del ejercicio 4
+
+```java
+public class Ejercicio4 {
+
+    public int maxDepth(Node<Integer> root) {
+        return maxDepthRecursivo(root);
+    }
+
+    private int maxDepthRecursivo(Node<Integer> actual) {
+
+        if (actual == null) {
+            return 0;
+        }
+
+        int izquierda = maxDepthRecursivo(actual.getLeft());
+
+        int derecha = maxDepthRecursivo(actual.getRight());
+
+        return Math.max(izquierda, derecha) + 1;
+    }
+}
+
+```
+### Salida de consola
+![alt text](image-7.png)
 

@@ -1,8 +1,13 @@
+import java.util.List;
+
 import model.Person;
 import structures.node.Node;
 import trees.BinariTree;
 import trees.Ejercicio1;
 import trees.Ejercicio2;
+import trees.Ejercicio3;
+import trees.Ejercicio4;
+import trees.InsertBSTTest;
 import trees.IntTree;
 
 public class App {
@@ -61,21 +66,64 @@ public class App {
         System.out.println("\nAltura del árbol: " + arbolNumeros.getAltura());
         System.out.println("Peso del árbol: " + arbolNumeros.getPeso());*/
 
-        System.out.println("\n--- EJERCICIO 1: IMPRIMIR ARBOL ---");
-        Ejercicio1 ejercicio = new Ejercicio1();
-        ejercicio.printTree(arbolNumeros.getRoot());
+        System.out.println("\n--- BASE DEL ARBOL CON ARRAY ---");
 
-        Ejercicio1 e1 = new Ejercicio1();
+    int[] numeros = {5, 3, 7, 2, 4, 6, 8};
 
-            System.out.println("\nÁrbol original:");
-            e1.printTree(arbolNumeros.getRoot());
+    InsertBSTTest ejercicioInsert = new InsertBSTTest();
 
-            Ejercicio2 e2 = new Ejercicio2();
-            e2.invert(arbolNumeros.getRoot());
+    Node<Integer> root = ejercicioInsert.insert(numeros);
 
-            System.out.println("\nÁrbol invertido:");
-            e1.printTree(arbolNumeros.getRoot());
+    Ejercicio1 impresor = new Ejercicio1();
+
+    System.out.println("\n--- EJERCICIO 01: INSERT BST ---");
+    impresor.printTree(root);
+
+
+    System.out.println("\n--- EJERCICIO 02: INVERTIR ARBOL ---");
+
+    System.out.println("Arbol original:");
+    impresor.printTree(root);
+
+    Ejercicio2 ejercicio2 = new Ejercicio2();
+    ejercicio2.invert(root);
+
+    System.out.println("\nArbol invertido:");
+    impresor.printTree(root);
+
+
+    System.out.println("\n--- EJERCICIO 03: LISTAR NIVELES ---");
+
+    Ejercicio3 ejercicio3 = new Ejercicio3();
+
+    List<List<Node<Integer>>> niveles =
+            ejercicio3.listLevels(root);
+
+    for (List<Node<Integer>> nivel : niveles) {
+
+        for (int i = 0; i < nivel.size(); i++) {
+
+            System.out.print(nivel.get(i).getValue());
+
+            if (i < nivel.size() - 1) {
+                System.out.print(" -> ");
+            }
+        }
+
+        System.out.println();
+    }
+
+
+    System.out.println("\n--- EJERCICIO 04: PROFUNDIDAD MAXIMA ---");
+
+    Ejercicio4 ejercicio4 = new Ejercicio4();
+     System.out.println("\nArbol original:");
+    impresor.printTree(root);
+
+    System.out.println(
+            "Profundidad: " +  ejercicio4.maxDepth(root));
+}
+
             
 
     }
-}
