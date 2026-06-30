@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Set;
 
+import Collections.maps.Maps;
 import Collections.set.Sets;
 import model.Contacto;
 import model.Person;
@@ -15,10 +16,19 @@ import trees.IntTree;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        runSets();
+        //runSets();
 
         //runIntTree();
         //runPersonTree();
+        runMaps();
+        
+    }
+
+    private static void runMaps() {
+       Maps maps = new Maps();
+       maps.construirHashMap();
+       maps.coLinkedHashMap();
+       maps.cTreeMap();
     }
 
     private static void runSets() {
