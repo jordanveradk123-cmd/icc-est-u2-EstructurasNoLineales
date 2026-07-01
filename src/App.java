@@ -5,6 +5,7 @@ import Collections.maps.Maps;
 import Collections.set.Sets;
 import model.Contacto;
 import model.Person;
+import structures.graphs.Graph;
 import structures.node.Node;
 import trees.BinariTree;
 import trees.Ejercicio1;
@@ -16,38 +17,60 @@ import trees.IntTree;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //runSets();
+        // runSets();
 
-        //runIntTree();
-        //runPersonTree();
-        runMaps();
-        
+        // runIntTree();
+        // runPersonTree();
+        // runMaps();
+        runGraphs();
+
+    }
+
+    private static void runGraphs() {
+
+        Graph<String> grafos = new Graph<>();
+
+        grafos.add("A");
+        grafos.add("B");
+        grafos.add("C");
+        grafos.add("D");
+        grafos.add("J");
+        grafos.addedgeUni("A", "B");
+        grafos.addedgeUni("B", "C");
+        grafos.addedgeUni("B", "D");
+        grafos.addedgeUni("C", "A");
+        grafos.addedgeUni("C", "D");
+        grafos.addedgeUni("D", "C");
+        grafos.addedgeUni("D", "J");
+        grafos.addedgeUni("J", "D");
+
+        System.out.println("\nGrafo dirigido:\n");
+        grafos.printGraph();
     }
 
     private static void runMaps() {
-       Maps maps = new Maps();
-       maps.construirHashMap();
-       maps.coLinkedHashMap();
-       maps.cTreeMap();
+        Maps maps = new Maps();
+        maps.construirHashMap();
+        maps.coLinkedHashMap();
+        maps.cTreeMap();
     }
 
     private static void runSets() {
         Sets sets = new Sets();
 
-
-        //Primera implemetacion de Set
+        // Primera implemetacion de Set
         System.out.println("Primera implemetacion de Set");
         Set<String> hashSet = sets.construirHashSet();
         System.out.println(hashSet);
         System.out.println("Tamaño del HashSet: " + hashSet.size());
         System.out.println("Contiene 'f': " + hashSet.contains("f"));
-        //Segunda implemetacion de Set LinkedHashSet
+        // Segunda implemetacion de Set LinkedHashSet
         System.out.println("\nSegunda implemetacion de Set");
         Set<String> linkedHashSet = sets.construLinkedHashSet();
         System.out.println(linkedHashSet);
         System.out.println("Tamaño del LinkedHashSet: " + linkedHashSet.size());
         System.out.println("Contiene 'A': " + linkedHashSet.contains("A"));
-         //Tercera implemetacion de Set TreeSet
+        // Tercera implemetacion de Set TreeSet
         System.out.println("\nTercera implemetacion de TreeSet");
         Set<String> treeSet = sets.construirTreeSet();
         System.out.println(treeSet);
@@ -66,12 +89,11 @@ public class App {
         System.out.println("Tamaño del HashSet con comparador: " + hashSetConComparador.size());
 
     }
-    
 
     private static void runPersonTree() {
-        BinariTree <Person> persontree = new BinariTree<>(); /// CLASE ARBOL
+        BinariTree<Person> persontree = new BinariTree<>(); /// CLASE ARBOL
         persontree.insert(new Person("Alice", 30));
-        persontree.insert(new Person("Bob", 25));   
+        persontree.insert(new Person("Bob", 25));
         persontree.insert(new Person("Charlie", 35));
         persontree.insert(new Person("David", 28));
         persontree.insert(new Person("Ana", 35));
@@ -104,77 +126,72 @@ public class App {
         arbolNumeros.insert(8); /// INORDER 3, 5, 8, 10, 15, 20
         arbolNumeros.insert(20); /// POSTORDER 3 8 5 15 20 10
         arbolNumeros.insert(15); // ANCHURA O NIVELES: 10 5 20 3 8 15
-/* 
-        System.out.println("pre Order");
-
-        arbolNumeros.preOrder();
-        System.out.println("\nPos Order");
-        arbolNumeros.posOrder();
-        System.out.println("\nIn Order");
-        arbolNumeros.inOrder();
-        System.out.println("\nPor Niveles");
-        arbolNumeros.imprimirPorNiveles();
-        System.out.println("\nAltura del árbol: " + arbolNumeros.getAltura());
-        System.out.println("Peso del árbol: " + arbolNumeros.getPeso());*/
+        /*
+         * System.out.println("pre Order");
+         * 
+         * arbolNumeros.preOrder();
+         * System.out.println("\nPos Order");
+         * arbolNumeros.posOrder();
+         * System.out.println("\nIn Order");
+         * arbolNumeros.inOrder();
+         * System.out.println("\nPor Niveles");
+         * arbolNumeros.imprimirPorNiveles();
+         * System.out.println("\nAltura del árbol: " + arbolNumeros.getAltura());
+         * System.out.println("Peso del árbol: " + arbolNumeros.getPeso());
+         */
 
         System.out.println("\n--- BASE DEL ARBOL CON ARRAY ---");
 
-    int[] numeros = {5, 3, 7, 2, 4, 6, 8};
+        int[] numeros = { 5, 3, 7, 2, 4, 6, 8 };
 
-    InsertBSTTest ejercicioInsert = new InsertBSTTest();
+        InsertBSTTest ejercicioInsert = new InsertBSTTest();
 
-    Node<Integer> root = ejercicioInsert.insert(numeros);
+        Node<Integer> root = ejercicioInsert.insert(numeros);
 
-    Ejercicio1 impresor = new Ejercicio1();
+        Ejercicio1 impresor = new Ejercicio1();
 
-    System.out.println("\n--- EJERCICIO 01: INSERT BST ---");
-    impresor.printTree(root);
+        System.out.println("\n--- EJERCICIO 01: INSERT BST ---");
+        impresor.printTree(root);
 
+        System.out.println("\n--- EJERCICIO 02: INVERTIR ARBOL ---");
 
-    System.out.println("\n--- EJERCICIO 02: INVERTIR ARBOL ---");
+        System.out.println("Arbol original:");
+        impresor.printTree(root);
 
-    System.out.println("Arbol original:");
-    impresor.printTree(root);
+        Ejercicio2 ejercicio2 = new Ejercicio2();
+        ejercicio2.invert(root);
 
-    Ejercicio2 ejercicio2 = new Ejercicio2();
-    ejercicio2.invert(root);
+        System.out.println("\nArbol invertido:");
+        impresor.printTree(root);
 
-    System.out.println("\nArbol invertido:");
-    impresor.printTree(root);
+        System.out.println("\n--- EJERCICIO 03: LISTAR NIVELES ---");
 
+        Ejercicio3 ejercicio3 = new Ejercicio3();
 
-    System.out.println("\n--- EJERCICIO 03: LISTAR NIVELES ---");
+        List<List<Node<Integer>>> niveles = ejercicio3.listLevels(root);
 
-    Ejercicio3 ejercicio3 = new Ejercicio3();
+        for (List<Node<Integer>> nivel : niveles) {
 
-    List<List<Node<Integer>>> niveles =
-            ejercicio3.listLevels(root);
+            for (int i = 0; i < nivel.size(); i++) {
 
-    for (List<Node<Integer>> nivel : niveles) {
+                System.out.print(nivel.get(i).getValue());
 
-        for (int i = 0; i < nivel.size(); i++) {
-
-            System.out.print(nivel.get(i).getValue());
-
-            if (i < nivel.size() - 1) {
-                System.out.print(" -> ");
+                if (i < nivel.size() - 1) {
+                    System.out.print(" -> ");
+                }
             }
+
+            System.out.println();
         }
 
-        System.out.println();
+        System.out.println("\n--- EJERCICIO 04: PROFUNDIDAD MAXIMA ---");
+
+        Ejercicio4 ejercicio4 = new Ejercicio4();
+        System.out.println("\nArbol original:");
+        impresor.printTree(root);
+
+        System.out.println(
+                "Profundidad: " + ejercicio4.maxDepth(root));
     }
 
-
-    System.out.println("\n--- EJERCICIO 04: PROFUNDIDAD MAXIMA ---");
-
-    Ejercicio4 ejercicio4 = new Ejercicio4();
-     System.out.println("\nArbol original:");
-    impresor.printTree(root);
-
-    System.out.println(
-            "Profundidad: " +  ejercicio4.maxDepth(root));
 }
-
-            
-
-    }
